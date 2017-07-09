@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name       zozotown-thumbnail
-// @version    0.0
+// @version    0.1
 // @description  ZOZOTOWNでAutopagerize時にサムネイルが表示されるようにするGreasemonkey Script
-// @include      http://zozo.jp/search/*
+// @include      http://zozo.jp/*
 // @require http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // ==/UserScript==
 
