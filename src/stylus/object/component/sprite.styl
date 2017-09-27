@@ -1,0 +1,140 @@
+/*
+Stylus variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon_home_width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon_home = x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet = width height image $spritesheet_sprites;
+*/
+$nirvanalastfm18sj_name = 'nirvanalastfm18sj';
+$nirvanalastfm18sj_x = 0px;
+$nirvanalastfm18sj_y = 0px;
+$nirvanalastfm18sj_offset_x = 0px;
+$nirvanalastfm18sj_offset_y = 0px;
+$nirvanalastfm18sj_width = 161px;
+$nirvanalastfm18sj_height = 600px;
+$nirvanalastfm18sj_total_width = 825px;
+$nirvanalastfm18sj_total_height = 600px;
+$nirvanalastfm18sj_image = '../img/sprite.png';
+$nirvanalastfm18sj = 0px 0px 0px 0px 161px 600px 825px 600px '../img/sprite.png' 'nirvanalastfm18sj';
+$nirvanalastfm24fx_name = 'nirvanalastfm24fx';
+$nirvanalastfm24fx_x = 166px;
+$nirvanalastfm24fx_y = 0px;
+$nirvanalastfm24fx_offset_x = -166px;
+$nirvanalastfm24fx_offset_y = 0px;
+$nirvanalastfm24fx_width = 161px;
+$nirvanalastfm24fx_height = 600px;
+$nirvanalastfm24fx_total_width = 825px;
+$nirvanalastfm24fx_total_height = 600px;
+$nirvanalastfm24fx_image = '../img/sprite.png';
+$nirvanalastfm24fx = 166px 0px -166px 0px 161px 600px 825px 600px '../img/sprite.png' 'nirvanalastfm24fx';
+$nirvanalastfm49xg_name = 'nirvanalastfm49xg';
+$nirvanalastfm49xg_x = 332px;
+$nirvanalastfm49xg_y = 0px;
+$nirvanalastfm49xg_offset_x = -332px;
+$nirvanalastfm49xg_offset_y = 0px;
+$nirvanalastfm49xg_width = 161px;
+$nirvanalastfm49xg_height = 600px;
+$nirvanalastfm49xg_total_width = 825px;
+$nirvanalastfm49xg_total_height = 600px;
+$nirvanalastfm49xg_image = '../img/sprite.png';
+$nirvanalastfm49xg = 332px 0px -332px 0px 161px 600px 825px 600px '../img/sprite.png' 'nirvanalastfm49xg';
+$nirvanalastfm68hw_name = 'nirvanalastfm68hw';
+$nirvanalastfm68hw_x = 498px;
+$nirvanalastfm68hw_y = 0px;
+$nirvanalastfm68hw_offset_x = -498px;
+$nirvanalastfm68hw_offset_y = 0px;
+$nirvanalastfm68hw_width = 161px;
+$nirvanalastfm68hw_height = 600px;
+$nirvanalastfm68hw_total_width = 825px;
+$nirvanalastfm68hw_total_height = 600px;
+$nirvanalastfm68hw_image = '../img/sprite.png';
+$nirvanalastfm68hw = 498px 0px -498px 0px 161px 600px 825px 600px '../img/sprite.png' 'nirvanalastfm68hw';
+$nirvanalastfm78oy_name = 'nirvanalastfm78oy';
+$nirvanalastfm78oy_x = 664px;
+$nirvanalastfm78oy_y = 0px;
+$nirvanalastfm78oy_offset_x = -664px;
+$nirvanalastfm78oy_offset_y = 0px;
+$nirvanalastfm78oy_width = 161px;
+$nirvanalastfm78oy_height = 600px;
+$nirvanalastfm78oy_total_width = 825px;
+$nirvanalastfm78oy_total_height = 600px;
+$nirvanalastfm78oy_image = '../img/sprite.png';
+$nirvanalastfm78oy = 664px 0px -664px 0px 161px 600px 825px 600px '../img/sprite.png' 'nirvanalastfm78oy';
+$spritesheet_width = 825px;
+$spritesheet_height = 600px;
+$spritesheet_image = '../img/sprite.png';
+$spritesheet_sprites = $nirvanalastfm18sj $nirvanalastfm24fx $nirvanalastfm49xg $nirvanalastfm68hw $nirvanalastfm78oy;
+$spritesheet = 825px 600px '../img/sprite.png' $spritesheet_sprites;
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  spriteWidth($icon_home)
+}
+
+.icon-email {
+  sprite($icon_email)
+}
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+spriteWidth($sprite) {
+  width: $sprite[4];
+}
+
+spriteHeight($sprite) {
+  height: $sprite[5];
+}
+
+spritePosition($sprite) {
+  background-position: $sprite[2] $sprite[3];
+}
+
+spriteImage($sprite) {
+  background-image: url($sprite[8]);
+}
+
+sprite($sprite) {
+  spriteImage($sprite)
+  spritePosition($sprite)
+  spriteWidth($sprite)
+  spriteHeight($sprite)
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of Stylus
+
+This must be run when you have at least 2 sprites.
+  If run with a single sprite, then there will be reference errors.
+
+sprites($spritesheet_sprites);
+*/
+sprites($sprites) {
+  for $sprite in $sprites {
+    $sprite_name = $sprite[9];
+    .{$sprite_name} {
+      sprite($sprite);
+    }
+  }
+}
