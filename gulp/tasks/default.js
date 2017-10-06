@@ -1,8 +1,19 @@
-import gulp       from 'gulp';
-import runSequence from 'run-sequence';
+import gulp from 'gulp';
+import paths from '../config';
 
-gulp.task('default', () => {
-	runSequence(['browserify', 'imagecopy', 'watch', 'server']);
+gulp.task('bs-reload', () => {
+	browserSync.reload();
+});
+
+gulp.task('htmlBuild', (cb) => {
+	return runSequence(
+		'pug',
+		'bs-reload',
+		cb
+	);
 });
 
 
+gulp.task('watch', () => {
+	gulp.watch(['./src/js/**/*.js'], ['browserify']);
+});

@@ -1,0 +1,13 @@
+{
+	"$schema": "./node_modules/gulp-monkeyscript/schema.json",
+	"name": "My Awesome Userscript!",
+	"version": "1.0.0",
+	"author": "Tom",
+	"description": "This userscript adds new functionality!",
+	"require": "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js",
+	"match": [
+		"http://www.website-alter.com/*"
+	],
+	"runAt": "document-start",
+	"useStrict": true
+}

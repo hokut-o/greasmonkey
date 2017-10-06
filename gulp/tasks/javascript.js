@@ -1,7 +1,7 @@
 import gulp from 'gulp';
-import browserSync from 'browser-sync';
-import runSequence from 'run-sequence';
-import paths      from '../config';
+import paths from '../config';
+import ms from 'gulp-monkeyscript'
+const msProject = ms.createProject('./monkeyscript.json');
 
 gulp.task('bs-reload', () => {
 	browserSync.reload();
@@ -13,11 +13,6 @@ gulp.task('htmlBuild', (cb) => {
 		'bs-reload',
 		cb
 	);
-});
-
-gulp.task('imagecopy', () => {
-	return gulp.src(paths.img_src)
-		.pipe(gulp.dest(paths.img_dist));
 });
 
 gulp.task('watch', () => {
